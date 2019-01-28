@@ -58,8 +58,11 @@ Crete your own Virtual OS
 ##With those view created, run the `LogAn.py` file:
 1. Place the `LogAn.py` file within the same directory as the VM and SQL file provided by Udacity.
 2. If you haven't already, launch the VM:
+
 	a. `vagrant up` -- only required once
+	
 	b. `vagrant ssh` -- required each and every time
+	
 3. Within the VM, navigate to `cd /vagrant`
 4. Goto Project folder `PJ3`
 5. Execute the file `python LogAn.py`
