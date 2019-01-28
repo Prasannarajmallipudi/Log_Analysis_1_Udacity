@@ -8,6 +8,7 @@ For this project, I was tasked to create a reporting tool that prints out report
 This reporting tool is a Python program using the `psycopg2` module to connect to the database.
 
 ### Assignment
+
 The reporting tool needed to answer the following questions::
 1. What are the most popular three articles of all time?
 2. Who are the most popular article authors of all time?
@@ -18,24 +19,27 @@ This section will describe the SQL views I created for the code to function prop
 
 ### Required SQL Views
 This program uses SQL views.
+
 ------> views.sql
+
 first run the and execute views.
+
 *For Assignment 1:*
-CREATE VIEW articles_view AS SELECT title,author,count(title) AS views
-FROM articles,log WHERE log.path LIKE concat('%',articles.slug) GROUP BY articles.title,articles.author ORDER BY views DESC limit 3;
+`CREATE VIEW articles_view AS SELECT title,author,count(title) AS views
+FROM articles,log WHERE log.path LIKE concat('%',articles.slug) GROUP BY articles.title,articles.author ORDER BY views DESC limit 3;``
 
 *For Assignment 2:*
-CREATE VIEW authors_view AS SELECT name,sum(articles_view.views) AS total
+`CREATE VIEW authors_view AS SELECT name,sum(articles_view.views) AS total
 FROM articles_view,authors WHERE authors.id=articles_view.author
-GROUP BY authors.name ORDER BY total DESC limit 4;
+GROUP BY authors.name ORDER BY total DESC limit 3;`
 
 *For Assignment 3:*
-CREATE VIEW log_view AS SELECT totals_view.date as date,((100.00*errors)/(total_errors)) AS percentage_errors FROM errors_view natural join totals_view
-WHERE errors_view.date=totals_view.date GROUP BY totals_view.date,percentage_errors order by percentage_errors desc;
+'CREATE VIEW log_view AS SELECT totals_view.date as date,((100.00*errors)/(total_errors)) AS percentage_errors FROM errors_view natural join totals_view
+WHERE errors_view.date=totals_view.date GROUP BY totals_view.date,percentage_errors order by percentage_errors desc;`
 
----> CREATE VIEW errors_view AS SELECT date(time),count(*) as errors FROM log WHERE log.status like concat('404 NOT FOUND') GROUP BY date(time) ORDER BY errors desc;
+`CREATE VIEW errors_view AS SELECT date(time),count(*) as errors FROM log WHERE log.status like concat('404 NOT FOUND') GROUP BY date(time) ORDER BY errors desc;`
 
----> CREATE VIEW totals_view AS SELECT date(time),count(status) AS total_errors FROM log GROUP BY date(time) ORDER BY total_errors desc;
+`CREATE VIEW totals_view AS SELECT date(time),count(status) AS total_errors FROM log GROUP BY date(time) ORDER BY total_errors desc;`
 
 ### Running the Program
 
@@ -61,7 +65,7 @@ Crete your own Virtual OS
 
 ### Output::---
 
-Heepe Connected..!
+`Heepe Connected..!
 The most popular three articles::
 Candidate is jerk, alleges rival -- 338647
 Bears love berries, alleges bear -- 253801
@@ -71,4 +75,4 @@ Rudolf von Treppenwitz -- 338647
 Ursula La Multa -- 253801
 Anonymous Contributor -- 170098
 On which day did more than 1%  of errors found::
-2016-07-17 -- 2.3%
+2016-07-17 -- 2.3%`
