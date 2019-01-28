@@ -1,6 +1,6 @@
 # Log_Analysis_1_Udacity
 
-## By Prasanna Raj Mallipudi
+By Prasanna Raj Mallipudi
 
 ### Project Overview
 
@@ -61,7 +61,8 @@ Crete your own Virtual OS
 	a. `vagrant up` -- only required once
 	b. `vagrant ssh` -- required each and every time
 3. Within the VM, navigate to `cd /vagrant`
-4. Execute the file `python LogAn.py`
+4. Goto Project folder `PJ3`
+5. Execute the file `python LogAn.py`
 
 ### Output::---
 
