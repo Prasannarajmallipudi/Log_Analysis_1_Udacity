@@ -65,17 +65,21 @@ Crete your own Virtual OS
 
 ### Output::---
 
-`Heepe Connected..!
+Heepe Connected..!
 
 The most popular three articles::
 Candidate is jerk, alleges rival -- 338647
+
 Bears love berries, alleges bear -- 253801
+
 Bad things gone, say good people -- 170098
 
 The most popular article authors::
 Rudolf von Treppenwitz -- 338647
+
 Ursula La Multa -- 253801
+
 Anonymous Contributor -- 170098
 
 On which day did more than 1%  of errors found::
-2016-07-17 -- 2.3%`
+2016-07-17 -- 2.3%
