@@ -1,26 +1,16 @@
-
 CREATE VIEW articles_view AS
-SELECT title,
-       author,
-       count(title) AS views
-FROM articles,
-     log
-WHERE log.path LIKE concat('%',articles.slug)
-GROUP BY articles.title,
+SELECT title, count(log.id) as views
+FROM articles, log
+WHERE log.path = CONCAT('/article/', articles.slug)
+GROUP BY articles.title
          articles.author
-ORDER BY views DESC limit 3;
+ORDER BY views desc limit 3;
 
 
 CREATE VIEW authors_view AS
-SELECT name,
-       sum(articles_view.views) AS total
-FROM articles_view,
-     authors
-WHERE authors.id=articles_view.author
-GROUP BY authors.name
-ORDER BY total DESC limit 4;
-
-
+SELECT title, name
+FROM articles, authors
+WHERE articles.author = authors.id;
 
 
 CREATE VIEW log_view AS
