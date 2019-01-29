@@ -28,7 +28,7 @@ def authors_view():
     FROM authors_view,articles_view
     WHERE authors_view.title = articles_view.title
     GROUP BY name ORDER BY views desc limit 4;'''
-    curr.execute("Av")
+    curr.execute(Av)
     arti = curr.fetchall()
     print("The most popular article authors::")
     for art_v in arti:
