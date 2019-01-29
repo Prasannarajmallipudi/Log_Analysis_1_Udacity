@@ -87,10 +87,12 @@ The most popular three articles::
 `Candidate is jerk, alleges rival --- 338647
 Bears love berries, alleges bear --- 253801
 Bad things gone, say good people --- 170098`
+
 The most popular article authors::
 `Ursula La Multa -- 507594
 Rudolf von Treppenwitz -- 423457
 Anonymous Contributor -- 170098
 Markoff Chaney -- 84557`
+
 On which day did more than 1%  of errors found::
 `2016-07-17 -- 2.3%`
