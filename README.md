@@ -25,13 +25,19 @@ This program uses SQL views.
 first run the and execute views.
 
 *For Assignment 1:*
-`CREATE VIEW articles_view AS SELECT title,author,count(title) AS views
-FROM articles,log WHERE log.path LIKE concat('%',articles.slug) GROUP BY articles.title,articles.author ORDER BY views DESC limit 3;`
+`CREATE VIEW articles_view AS
+SELECT title, count(log.id) as views
+FROM articles, log
+WHERE log.path = CONCAT('/article/', articles.slug)
+GROUP BY articles.title
+         articles.author
+ORDER BY views desc limit 3;`
 
 *For Assignment 2:*
-`CREATE VIEW authors_view AS SELECT name,sum(articles_view.views) AS total
-FROM articles_view,authors WHERE authors.id=articles_view.author
-GROUP BY authors.name ORDER BY total DESC limit 3;`
+`CREATE VIEW authors_view AS
+SELECT title, name
+FROM articles, authors
+WHERE articles.author = authors.id;`
 
 *For Assignment 3:*
 `CREATE VIEW log_view AS SELECT totals_view.date as date,((100.00*errors)/(total_errors)) AS percentage_errors FROM errors_view natural join totals_view
@@ -50,6 +56,13 @@ Crete your own Virtual OS
 ##First, you'll need to create the views listed above:
 1. Within the VM, navigate to `cd /vagrant`
 2. Run `psql`
+Data Base Setup
+Now Download the project DataBase newsdata.sql.
+Unzip the data to get the newsdata.sql file.
+Put the newsdata.sql file into the vagrant directory
+
+`psql -d news -f newsdata.sql`
+
 3. Connect to the database `\c news`
 4. Enter the views listed above
    psql -d news -f views.sql
@@ -70,20 +83,14 @@ Crete your own Virtual OS
 ### Output::---
 
 Heepe Connected..!
-
 The most popular three articles::
-Candidate is jerk, alleges rival -- 338647
-
-Bears love berries, alleges bear -- 253801
-
-Bad things gone, say good people -- 170098
-
+`Candidate is jerk, alleges rival --- 338647
+Bears love berries, alleges bear --- 253801
+Bad things gone, say good people --- 170098`
 The most popular article authors::
-Rudolf von Treppenwitz -- 338647
-
-Ursula La Multa -- 253801
-
+`Ursula La Multa -- 507594
+Rudolf von Treppenwitz -- 423457
 Anonymous Contributor -- 170098
-
+Markoff Chaney -- 84557`
 On which day did more than 1%  of errors found::
-2016-07-17 -- 2.3%
+`2016-07-17 -- 2.3%`
