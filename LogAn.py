@@ -20,15 +20,20 @@ def articles_view():
     for art_v in arti:
         print art_v[0], "---", art_v[1]
 
-# top most 4 Authors
+# top most  Authors
 
 
 def authors_view():
-    curr.execute("select name,total from authors_view limit 4;")
+    Av = '''SELECT name,sum(articles_view.views) AS views
+    FROM authors_view,articles_view
+    WHERE authors_view.title = articles_view.title
+    GROUP BY name ORDER BY views desc limit 4;'''
+    curr.execute("Av")
     arti = curr.fetchall()
     print("The most popular article authors::")
     for art_v in arti:
         print art_v[0], "--", art_v[1]
+
 
 # Error Log display
 
